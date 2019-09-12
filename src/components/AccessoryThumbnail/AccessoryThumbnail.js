@@ -5,31 +5,29 @@ import ContentLoader from 'react-content-loader'
 
 
 const SelectorWrapper = styled.div`
-  // display: ${props => !props.isLoading ? 'flex' : 'block'};
-  display: flex;
-  background: white;
-  flex: 0 1 100px;
-  min-height: 100px;  
-  padding: 5px;
-  border: ${props => props.active && !props.isLoading ? '3px solid #0080FF; ' : '3px solid #E0E0E0'};
- // justify-content: space-between;
-  border-radius: 5px;
-  margin: 5px 5px 0 0;
-  align-self: center;
-  position: relative;
-  ::before {
-    content: '';
-    display: ${props => props.active && !props.isLoading ? 'block; ' : 'none'};
-    position:absolute;
-    bottom: 0;
-    left: 50%;
-    margin-left: -15px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 15px 20px 15px;
-    border-color: transparent transparent #0080FF transparent;
-  }
+    background: #fff;
+    padding: ${props => !props.isLoading ? '0.5em' : '1.5em'};
+    width: 100%;
+    border: ${props => props.active && !props.isLoading ? '3px solid #0080FF; ' : '3px solid #E0E0E0'};
+    border-radius: 5px;
+    margin: 5px 20px 0 0;
+    position: relative;
+    ::before {
+        content: '';
+        display: ${props => props.active && !props.isLoading ? 'block; ' : 'none'};
+        position:absolute;
+        bottom: 0;
+        left: 50%;
+        margin-left: -15px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 15px 20px 15px;
+        border-color: transparent transparent #0080FF transparent;
+    }
+    &:last-child {
+        margin-right: 0px;
+    }
 `;
 
 const SelectorThumbImage = styled.img`
@@ -39,8 +37,8 @@ const SelectorThumbImage = styled.img`
 function AccessoryThumbnail({id, image, onClick, active, isLoading}) {
     let componentToRender = (
         <ContentLoader
-            height={100}
-            width={100}
+            height={30}
+            width={30}
             speed={1}
             primaryColor={'#c0c0c0'}
             secondaryColor={'#999'}

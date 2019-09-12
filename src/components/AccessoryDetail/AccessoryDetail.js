@@ -8,11 +8,9 @@ const DetailWrapper = styled.div`
   display: flex;
   flex: 1 1 100%;
   flex-wrap: wrap;
-  margin-top: 20px;
   width: 100%;
-  div {
-    padding: 10px;
-  }
+  margin-top: 25px;
+  padding-bottom: 20px;
 `;
 
 const DetailInfo = styled.div`
@@ -23,11 +21,13 @@ const DetailInfo = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  flex: 1 0 150px;
+  flex: 1 0 50%;
+  padding: 20px;
 `;
 
 const DetailDescription = styled.div`
-  flex: 0 1 200px;
+  flex: 0 1 40%;
+  padding: 20px;
   display: flex;
   text-align: left;
   flex-direction: column;
@@ -47,7 +47,7 @@ const AddToBasket = styled.button`
   border: ${props => props.isLoading ? '3px solid #C0C0C0' : '3px solid #00CC00'};
   border-radius: 5px;
   color: ${props => props.isLoading ? '#C0C0C0' : '#00CC00'};
-  font-size: 18px; 
+  font-size: 2em; 
 `;
 
 const ImageDetail = styled.img`
@@ -71,9 +71,8 @@ const PriceWrap = styled.div`
 `;
 
 const Price = styled.p`
-  height:22px;
   font-weight: 900;
-  font-size: 22px;
+  font-size: 2em;
   padding: 10px 0;
   width: 100%;
   text-align: center;
@@ -82,7 +81,7 @@ const Price = styled.p`
 `;
 
 const Title = styled.span`
-  height:22px;
+  font-size: 2em; 
 `;
 
 
@@ -115,10 +114,10 @@ function AccessoryDetail({name, price, image, isLoading}) {
         >
             {/* Only SVG shapes */}
             <rect x="0" y="0" rx="3" ry="3" width="100" height="6" />
-            <rect x="0" y="10" rx="3" ry="3" width="100" height="6" />
-            <rect x="0" y="20" rx="3" ry="3" width="100" height="6" />
-            <rect x="0" y="30" rx="3" ry="3" width="100" height="6" />
-            <rect x="0" y="40" rx="3" ry="3" width="100" height="6" />
+            <rect x="0" y="10" rx="3" ry="3" width="80" height="6" />
+            <rect x="0" y="20" rx="3" ry="3" width="50" height="6" />
+            <rect x="0" y="30" rx="3" ry="3" width="50" height="6" />
+            <rect x="0" y="40" rx="3" ry="3" width="30" height="6" />
         </ContentLoader>
 )
 

@@ -1,40 +1,48 @@
-import React, {useState} from 'react';
-import styled from 'styled-components'
-import AccessoriesSelector from './containers/AccessoriesSelector'
-import accessoriesMockData from './mocks/accessoriesList'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import AccessoriesSelector from './containers/AccessoriesSelector';
+import accessoriesMockData from './mocks/accessoriesList';
+
 
 const AppWrapper = styled.div`
   display: flex;
   background: gray;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   flex-wrap: wrap;
-  padding: 0 10px;
-  transition: 0.1;
+  padding: 0px;
 `;
 
 const ContentWrapper = styled.div`
   border: 1px solid #BCB5B9;
-  border-radius: 5px;
-  padding: 20px;
-  background: #F2F2F2;
-  width: 640px;
+  width: 100%
+  display: flex;
+  flex-flow: row nowrap;
+`;
+const ContentColumnWrapper = styled.div`
+  width: 50%;
+  flex-direction: column;
 `;
 
 function App() {
 
     //TODO: connect isLoading to relevant props and delete timeout
     const [isLoading, stopLoading] = useState(true);
-    setTimeout(function(){ stopLoading(false); }, 1000); // Imitation of waiting for data
+    setTimeout(() => stopLoading(false), 1500); // Imitation of waiting for data
 
-  return (
-    <AppWrapper>
-        <ContentWrapper>
-            <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading}/>
-        </ContentWrapper>
-    </AppWrapper>
-  )
+    return (
+        <AppWrapper>
+            <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />
+            {/*<ContentWrapper>*/}
+            {/*    <ContentColumnWrapper>*/}
+            {/*        <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />*/}
+            {/*    </ContentColumnWrapper>*/}
+            {/*    <ContentColumnWrapper>*/}
+            {/*        <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />*/}
+            {/*    </ContentColumnWrapper>*/}
+            {/*</ContentWrapper>*/}
+        </AppWrapper>
+    );
 }
 
 export default App;

@@ -9,16 +9,21 @@ const AccessoriesRoot = styled.div`
   padding: 0;
   margin: 0;
   flex-direction: column;
+  padding: 20px;
 `;
 
 const ThumbnailsWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-self: flex-start;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+`;
+
+const ContentWrapper = styled.div`
+  border: 1px solid #BCB5B9;
+  border-radius: 5px;
+  background: #F2F2F2;
   width: 100%;
-  padding-left: 5px;
 `;
 
 function AccessoriesSelector({accessories, isLoading}) {
@@ -31,25 +36,27 @@ function AccessoriesSelector({accessories, isLoading}) {
 
     const amount = 5; // SHOW ONLY 5 ACCESSORIES THUMBNAILS
     return (
-        <AccessoriesRoot>
-            <ThumbnailsWrapper>
-                {accessories.slice(0, amount).map((item) => (
-                    <AccessoryThumbnail
-                        key={item.id}
-                        id={item.id}
-                        image={item.imageUri}
-                        active={item.id === activeAccessory.id}
-                        onClick={handleChangeAccessory}
-                        isLoading={isLoading}
-                    />))}
-            </ThumbnailsWrapper>
-            <AccessoryDetail
-                image={activeAccessory.imageUri}
-                name={activeAccessory.name}
-                price={activeAccessory.price}
-                isLoading={isLoading}
-            />
-        </AccessoriesRoot>)
+        <ContentWrapper>
+            <AccessoriesRoot>
+                <ThumbnailsWrapper>
+                    {accessories.slice(0, amount).map((item) => (
+                        <AccessoryThumbnail
+                            key={item.id}
+                            id={item.id}
+                            image={item.imageUri}
+                            active={item.id === activeAccessory.id}
+                            onClick={handleChangeAccessory}
+                            isLoading={isLoading}
+                        />))}
+                </ThumbnailsWrapper>
+                <AccessoryDetail
+                    image={activeAccessory.imageUri}
+                    name={activeAccessory.name}
+                    price={activeAccessory.price}
+                    isLoading={isLoading}
+                />
+            </AccessoriesRoot>
+        </ContentWrapper>)
 }
 
 AccessoriesSelector.propTypes = {
