@@ -1,4 +1,4 @@
-import React, {useState, Fragment, useCallback} from 'react';
+import React, {useState, useCallback} from 'react';
 import styled from 'styled-components'
 import * as PropTypes from 'prop-types';
 import AccessoryThumbnail from '../components/AccessoryThumbnail/AccessoryThumbnail'
@@ -26,13 +26,13 @@ const ContentWrapper = styled.div`
   width: 100%;
 `;
 
-function AccessoriesSelector({accessories, isLoading}) {
+function AccessoriesSelector({accessories, isLoading, addToBasketAction}) {
     const firstItem = accessories.length > 0 ? accessories[0] : null;
     const [activeAccessory, setActiveAccessory] = useState(firstItem);
 
     const handleChangeAccessory = useCallback((id) => () => {
         setActiveAccessory(accessories.find(item => item.id === id))
-    }, []);
+    }, [accessories]);
 
     const amount = 5; // SHOW ONLY 5 ACCESSORIES THUMBNAILS
     return (
@@ -67,6 +67,7 @@ AccessoriesSelector.propTypes = {
         price: PropTypes.string.isRequired,
     })).isRequired,
     isLoading: PropTypes.bool.isRequired,
+    addToBasketAction: PropTypes.func.isRequired,
 };
 
 export default AccessoriesSelector;

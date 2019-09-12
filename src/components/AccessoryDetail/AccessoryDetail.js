@@ -21,12 +21,12 @@ const DetailInfo = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  flex: 1 0 50%;
+  flex: 1 0 40%;
   padding: 1.5em;
 `;
 
 const DetailDescription = styled.div`
-  flex: 0 1 40%;
+  flex: 1 0 40%;
   padding: 1.5em;
   display: flex;
   text-align: left;
@@ -42,12 +42,15 @@ const ActionWrapper = styled.div`
 const AddToBasket = styled.button`
   flex: 0 1 100%;
   margin-top: 20px;
-  height: 60px;
+  height: 3em;
   background: white;
-  border: ${props => props.isLoading ? '3px solid #C0C0C0' : '3px solid #00CC00'};
+  border: ${props => props.isLoading ? '3px solid #C0C0C0' : '3px solid #547640'};
   border-radius: 5px;
-  color: ${props => props.isLoading ? '#C0C0C0' : '#00CC00'};
-  font-size: 1em; 
+  color: ${props => props.isLoading ? '#C0C0C0' : '#547640'};
+  font-size: 2.5em;
+  > i {
+    margin-right: 20px;
+  }
 `;
 
 const ImageDetail = styled.img`
@@ -57,8 +60,8 @@ const ImageDetail = styled.img`
 const TitleWrap = styled.div`
   width: 100%;
   font-weight: 600;
-  font-size: 18px;
   flex: 0 1 50%;
+  padding-top: 2em;
 `;
 
 const PriceWrap = styled.div`
@@ -66,13 +69,11 @@ const PriceWrap = styled.div`
   justify-content: center;
   flex: 0 1 50%;
   align-items: center;
-  p {
-  }
 `;
 
 const Price = styled.p`
   font-weight: 900;
-  font-size: 1.5em;
+  font-size: 2em;
   padding: 10px 0;
   width: 100%;
   text-align: center;
@@ -81,70 +82,61 @@ const Price = styled.p`
 `;
 
 const Title = styled.span`
-  font-size: 2em; 
+  font-size: 2.5em; 
 `;
 
+const ImageLoader = () => (
+    <ContentLoader
+        height={150}
+        width={150}
+        speed={1}
+        primaryColor={'#c0c0c0'}
+        secondaryColor={'#999'}
+    >
+        <rect x="0" y="0" rx="0" ry="0" width="150" height="150" />
+    </ContentLoader>
+);
+
+const DescriptionLoader = () => (
+    <ContentLoader
+        height={100}
+        width={100}
+        speed={1}
+        primaryColor={'#c0c0c0'}
+        secondaryColor={'#999'}
+    >
+        <rect x="0" y="0" rx="3" ry="3" width="100" height="6" />
+        <rect x="0" y="10" rx="3" ry="3" width="80" height="6" />
+        <rect x="0" y="20" rx="3" ry="3" width="50" height="6" />
+        <rect x="0" y="30" rx="3" ry="3" width="50" height="6" />
+        <rect x="0" y="40" rx="3" ry="3" width="30" height="6" />
+    </ContentLoader>
+);
 
 function AccessoryDetail({name, price, image, isLoading}) {
 
     //TODO: This callback should fire addToBasket(payload{$name,$price}) => redux/API
     const handleBasket = useCallback(() => {
         alert(`Your order: \n\nProduct Name: ${name}\n\nProduct price: ${price}`);
-    }, []);
-
-    let imageToRender = (
-        <ContentLoader
-            height={150}
-            width={150}
-            speed={1}
-            primaryColor={'#c0c0c0'}
-            secondaryColor={'#999'}
-        >
-            {/* Only SVG shapes */}
-            <rect x="0" y="0" rx="0" ry="0" width="150" height="150" />
-        </ContentLoader>
-    );
-    let descriptionToRender = (
-        <ContentLoader
-            height={100}
-            width={100}
-            speed={1}
-            primaryColor={'#c0c0c0'}
-            secondaryColor={'#999'}
-        >
-            {/* Only SVG shapes */}
-            <rect x="0" y="0" rx="3" ry="3" width="100" height="6" />
-            <rect x="0" y="10" rx="3" ry="3" width="80" height="6" />
-            <rect x="0" y="20" rx="3" ry="3" width="50" height="6" />
-            <rect x="0" y="30" rx="3" ry="3" width="50" height="6" />
-            <rect x="0" y="40" rx="3" ry="3" width="30" height="6" />
-        </ContentLoader>
-)
-
-    if (!isLoading) {
-        imageToRender = (
-            <ImageDetail src={image}/>
-        );
-        descriptionToRender = (
-            <Fragment>
-                <TitleWrap>
-                    <Title>{name}</Title>
-                </TitleWrap>
-                <PriceWrap>
-                    <Price>{price}</Price>
-                </PriceWrap>
-            </Fragment>
-        );
-    }
+    }, [name, price]);
 
     return (
         <DetailWrapper>
             <DetailInfo>
                 <ImageWrapper>
-                    {imageToRender}
+                    {isLoading ? <ImageLoader /> : <ImageDetail src={image}/>}
                 </ImageWrapper>
                 <DetailDescription isLoading={isLoading}>
-                    {descriptionToRender}
+                    {isLoading ? <DescriptionLoader /> : (
+                        <Fragment>
+                            <TitleWrap>
+                                <Title>{name}</Title>
+                            </TitleWrap>
+                            <PriceWrap>
+                                <Price>{price}</Price>
+                            </PriceWrap>
+                        </Fragment>
+                    )}
                 </DetailDescription>
             </DetailInfo>
             <ActionWrapper>

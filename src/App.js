@@ -20,7 +20,7 @@ const ContentWrapper = styled.div`
   flex-flow: row nowrap;
 `;
 const ContentColumnWrapper = styled.div`
-  width: 50%;
+  width: ${props => props.col === 3 ? '33.33%' : '50%'};
   flex-direction: column;
 `;
 
@@ -32,15 +32,26 @@ function App() {
 
     return (
         <AppWrapper>
+            <ContentWrapper>
+                <ContentColumnWrapper col={3}>
+                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />
+                </ContentColumnWrapper>
+                <ContentColumnWrapper col={3}>
+                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />
+                </ContentColumnWrapper>
+                <ContentColumnWrapper col={3}>
+                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />
+                </ContentColumnWrapper>
+            </ContentWrapper>
+            <ContentWrapper>
+                <ContentColumnWrapper>
+                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />
+                </ContentColumnWrapper>
+                <ContentColumnWrapper>
+                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />
+                </ContentColumnWrapper>
+            </ContentWrapper>
             <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />
-            {/*<ContentWrapper>*/}
-            {/*    <ContentColumnWrapper>*/}
-            {/*        <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />*/}
-            {/*    </ContentColumnWrapper>*/}
-            {/*    <ContentColumnWrapper>*/}
-            {/*        <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />*/}
-            {/*    </ContentColumnWrapper>*/}
-            {/*</ContentWrapper>*/}
         </AppWrapper>
     );
 }
