@@ -22,12 +22,12 @@ const DetailInfo = styled.div`
 
 const ImageWrapper = styled.div`
   flex: 1 0 50%;
-  padding: 20px;
+  padding: 1.5em;
 `;
 
 const DetailDescription = styled.div`
   flex: 0 1 40%;
-  padding: 20px;
+  padding: 1.5em;
   display: flex;
   text-align: left;
   flex-direction: column;
@@ -47,7 +47,7 @@ const AddToBasket = styled.button`
   border: ${props => props.isLoading ? '3px solid #C0C0C0' : '3px solid #00CC00'};
   border-radius: 5px;
   color: ${props => props.isLoading ? '#C0C0C0' : '#00CC00'};
-  font-size: 2em; 
+  font-size: 1em; 
 `;
 
 const ImageDetail = styled.img`
@@ -72,7 +72,7 @@ const PriceWrap = styled.div`
 
 const Price = styled.p`
   font-weight: 900;
-  font-size: 2em;
+  font-size: 1.5em;
   padding: 10px 0;
   width: 100%;
   text-align: center;
