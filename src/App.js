@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components'
-import Accessories from './containers/Accessories'
+import AccessoriesSelector from './containers/AccessoriesSelector'
 import accessoriesMockData from './mocks/accessoriesList'
 
 const AppWrapper = styled.div`
@@ -31,7 +31,7 @@ function App() {
   return (
     <AppWrapper>
         <ContentWrapper>
-            <Accessories accessories={accessoriesMockData} isLoading={isLoading}/>
+            <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading}/>
         </ContentWrapper>
     </AppWrapper>
   )

@@ -21,7 +21,7 @@ const ThumbnailsWrapper = styled.div`
   padding-left: 5px;
 `;
 
-function Accessories({accessories, isLoading}) {
+function AccessoriesSelector({accessories, isLoading}) {
     const firstItem = accessories.length > 0 ? accessories[0] : null;
     const [activeAccessory, setActiveAccessory] = useState(firstItem);
 
@@ -52,7 +52,7 @@ function Accessories({accessories, isLoading}) {
         </AccessoriesRoot>)
 }
 
-Accessories.propTypes = {
+AccessoriesSelector.propTypes = {
     accessories: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
@@ -62,4 +62,4 @@ Accessories.propTypes = {
     isLoading: PropTypes.bool.isRequired,
 };
 
-export default Accessories;
+export default AccessoriesSelector;
