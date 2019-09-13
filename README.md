@@ -8,7 +8,7 @@ npm install
 ```
 
 # Start developing
-Basicaly start with
+For start developmen server
 ```
 npm start
 ```
