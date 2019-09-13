@@ -54,6 +54,7 @@ function AccessoriesSelector({accessories, isLoading, addToBasketAction}) {
                     name={activeAccessory.name}
                     price={activeAccessory.price}
                     isLoading={isLoading}
+                    onAddToBasket={addToBasketAction}
                 />
             </AccessoriesRoot>
         </ContentWrapper>)

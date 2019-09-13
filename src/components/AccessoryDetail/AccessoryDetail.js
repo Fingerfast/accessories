@@ -47,7 +47,7 @@ const AddToBasket = styled.button`
   border: ${props => props.isLoading ? '3px solid #C0C0C0' : '3px solid #547640'};
   border-radius: 5px;
   color: ${props => props.isLoading ? '#C0C0C0' : '#547640'};
-  font-size: 2.5em;
+  font-size: 2em;
   > i {
     margin-right: 20px;
   }
@@ -113,12 +113,11 @@ const DescriptionLoader = () => (
     </ContentLoader>
 );
 
-function AccessoryDetail({name, price, image, isLoading}) {
+function AccessoryDetail({name, price, image, isLoading, onAddToBasket}) {
 
-    //TODO: This callback should fire addToBasket(payload{$name,$price}) => redux/API
-    const handleBasket = useCallback(() => {
-        alert(`Your order: \n\nProduct Name: ${name}\n\nProduct price: ${price}`);
-    }, [name, price]);
+    const handleAddToBasket = useCallback(()  => {
+        onAddToBasket(name, price);
+    }, [name, price, onAddToBasket]);
 
     return (
         <DetailWrapper>
@@ -140,7 +139,7 @@ function AccessoryDetail({name, price, image, isLoading}) {
                 </DetailDescription>
             </DetailInfo>
             <ActionWrapper>
-                <AddToBasket disabled={isLoading} onClick={handleBasket} isLoading={isLoading}><i className="fas fa-cart-plus"/>Add to basket</AddToBasket>
+                <AddToBasket disabled={isLoading} onClick={handleAddToBasket} isLoading={isLoading}><i className="fas fa-cart-plus"/>Add to basket</AddToBasket>
             </ActionWrapper>
         </DetailWrapper>
     )
@@ -150,7 +149,8 @@ AccessoryDetail.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    isLoading: PropTypes.bool
+    isLoading: PropTypes.bool,
+    onAddToBasket: PropTypes.func.isRequired
 };
 
 export default AccessoryDetail;

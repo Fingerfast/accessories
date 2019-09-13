@@ -24,34 +24,38 @@ const ContentColumnWrapper = styled.div`
   flex-direction: column;
 `;
 
+const handleBasket = (name, price) => {
+    alert(`Your order: \n\nProduct Name: ${name}\n\nProduct price: ${price}`);
+};
+
 function App() {
+    const [isLoading, stopLoading] = useState(true);
 
     //TODO: connect isLoading to relevant props and delete timeout
-    const [isLoading, stopLoading] = useState(true);
     setTimeout(() => stopLoading(false), 1500); // Imitation of waiting for data
 
     return (
         <AppWrapper>
             <ContentWrapper>
                 <ContentColumnWrapper col={3}>
-                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />
+                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} addToBasketAction={handleBasket}/>
                 </ContentColumnWrapper>
                 <ContentColumnWrapper col={3}>
-                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />
+                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} addToBasketAction={handleBasket}/>
                 </ContentColumnWrapper>
                 <ContentColumnWrapper col={3}>
-                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />
+                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} addToBasketAction={handleBasket}/>
                 </ContentColumnWrapper>
             </ContentWrapper>
             <ContentWrapper>
                 <ContentColumnWrapper>
-                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />
+                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} addToBasketAction={handleBasket}/>
                 </ContentColumnWrapper>
                 <ContentColumnWrapper>
-                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />
+                    <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} addToBasketAction={handleBasket}/>
                 </ContentColumnWrapper>
             </ContentWrapper>
-            <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} />
+            <AccessoriesSelector accessories={accessoriesMockData} isLoading={isLoading} addToBasketAction={handleBasket}/>
         </AppWrapper>
     );
 }
