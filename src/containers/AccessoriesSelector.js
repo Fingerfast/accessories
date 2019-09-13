@@ -4,10 +4,14 @@ import * as PropTypes from 'prop-types';
 import AccessoryThumbnail from '../components/AccessoryThumbnail/AccessoryThumbnail'
 import AccessoryDetail from '../components/AccessoryDetail/AccessoryDetail'
 
+const ContentWrapper = styled.div`
+  border: 1px solid #BCB5B9;
+  border-radius: 5px;
+  background: #F2F2F2;
+`;
+
 const AccessoriesRoot = styled.div`
   display: flex;
-  padding: 0;
-  margin: 0;
   flex-direction: column;
   padding: 20px;
 `;
@@ -17,13 +21,6 @@ const ThumbnailsWrapper = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-around;
-`;
-
-const ContentWrapper = styled.div`
-  border: 1px solid #BCB5B9;
-  border-radius: 5px;
-  background: #F2F2F2;
-  width: 100%;
 `;
 
 function AccessoriesSelector({accessories, isLoading, addToBasketAction}) {
